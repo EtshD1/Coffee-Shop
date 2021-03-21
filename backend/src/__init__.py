@@ -85,14 +85,20 @@ def createDrink(jwt):
         recipe = body.get('recipe')
 
         stringedRecipe = json.dumps(recipe)
-
-        newDrink = Drink(
-            title=title,
-            recipe=stringedRecipe
-        )
-
-        newDrink.insert()
-        return jsonify({'success': True, "drinks": newDrink.long()})
+        if type(recipe) is list:
+            newDrink = Drink(
+                title=title,
+                recipe=stringedRecipe
+            )
+            newDrink.insert()
+            return jsonify({'success': True, "drinks": newDrink.long()})
+        else:
+            newDrink = Drink(
+                title=title,
+                recipe=f"[{stringedRecipe}]"
+            )
+            newDrink.insert()
+            return jsonify({'success': True, "drinks": newDrink.long()})
     except:
         db.session.rollback()
         print(sys.exc_info())
