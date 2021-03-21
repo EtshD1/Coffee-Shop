@@ -80,7 +80,7 @@ You can also edit environmental variables in the `.env` file.
     "success": true
 }
 ```
-### PATCH /drinks/<id>
+### PATCH /drinks/(id)
 - Permission: patch:drinks
 - Returns: An object with the patched drink details.
 - Response:
@@ -100,9 +100,9 @@ You can also edit environmental variables in the `.env` file.
     "success": true
 }
 ```
-### DELETE /drinks/<id>
+### DELETE /drinks/(id)
 - Permission: delete:drinks
-- Returns: An object with the patched drink details.
+- Returns: An object with the deleted id.
 - Response:
 ```json
 {
