@@ -63,6 +63,17 @@ You can also edit environmental variables in the `.env` file.
 ### POST /drinks
 - Permission: post:drinks
 - Returns: An object with the created drink details.
+- Body:
+```json
+{
+    "title": "Water3",
+    "recipe": {
+        "name": "Water",
+        "color": "blue",
+        "parts": 1
+    }
+}
+```
 - Response:
 ```json
 {
@@ -83,6 +94,12 @@ You can also edit environmental variables in the `.env` file.
 ### PATCH /drinks/(id)
 - Permission: patch:drinks
 - Returns: An object with the patched drink details.
+- Body:
+```json
+{
+    "title": "Water5"
+}
+```
 - Response:
 ```json
 {
