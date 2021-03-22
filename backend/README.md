@@ -136,3 +136,9 @@ If a error occurs, and object would be sent with the info about the error. ex:
   "message": "Not found"
 }
 ```
+## Testing
+To execute the tests, navigate to the backend directory and then run
+```bash
+python3 test.py
+```
+Testings will only test as "public" user role. Barista or Manager roles will require a special token.
