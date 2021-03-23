@@ -135,7 +135,7 @@ def create_app(test_config=None):
                 if recipe:
                     drink.recipe = recipe
                 drink.update()
-                return jsonify({'success': True, "drinks": drink.long()})
+                return jsonify({'success': True, "drinks": [drink.long()]})
             else:
                 return jsonify({'success': False, "info": "Drink not found"})
         except:
@@ -240,6 +240,14 @@ def create_app(test_config=None):
     @app.errorhandler(401)
     def unauthorized(error):
         print(error)
+        return jsonify({
+            'success': False,
+            'info': 'Unauthorized',
+            'error': 401
+        }), 401
+
+    @app.errorhandler(AuthError)
+    def auth_error(error):
         return jsonify({
             'success': False,
             'info': 'Unauthorized',
